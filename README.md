@@ -113,7 +113,7 @@ cp .env.example .env
 Open `.env` and fill in your API keys:
 
 ```env
-MISTRAL_API_KEY=your_mistral_api_key_here
+GOOGLE_API_KEY=your_mistral_api_key_here
 TAVILY_API_KEY=your_tavily_api_key_here
 ```
 
