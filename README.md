@@ -2,7 +2,7 @@
 
 A 4-agent AI pipeline that autonomously searches the web, scrapes content, writes a structured research report, and critiques it — all from a single topic input.
 
-Built with **LangChain Agents**, **Mistral AI**, **Tavily Search API**, and **Streamlit**.
+Built with **LangChain Agents**, **Gemini AI**, **Tavily Search API**, and **Streamlit**.
 
 ---
 
@@ -34,7 +34,7 @@ User Topic
 └─────────────────┘
 ```
 
-Each agent is powered by **Mistral Small (mistral-small-2603)** via `langchain-mistralai`.
+Each agent is powered by **Gemini (gemini-2.5-flash)** via `langchain-google-genai`.
 
 ---
 
@@ -67,7 +67,7 @@ Each agent is powered by **Mistral Small (mistral-small-2603)** via `langchain-m
 
 | Layer | Technology |
 |---|---|
-| LLM | Mistral Small via `langchain-mistralai` |
+| LLM | Google gemini via `langchain-google-genai` |
 | Agents & Chains | LangChain (`langchain`, `langchain-core`) |
 | Web Search | Tavily API (`tavily-python`) |
 | Web Scraping | `requests` + `BeautifulSoup4` |
@@ -150,12 +150,13 @@ python pipeline.py
 - Strips `<script>`, `<style>`, `<nav>`, `<footer>` tags before extraction
 
 ### Writer Chain
-- `ChatPromptTemplate | ChatMistralAI | StrOutputParser`
+- `ChatPromptTemplate | ChatGoogleGenerativeAI
+ | StrOutputParser`
 - Prompt enforces structure: Introduction → Key Findings (min 3) → Conclusion → Sources
 - Combines both search snippets and scraped content as context
 
 ### Critic Chain
-- `ChatPromptTemplate | ChatMistralAI | StrOutputParser`
+- `ChatPromptTemplate | ChatGoogleGenerativeAI | StrOutputParser`
 - Returns a strict structured evaluation: Score (X/10), Strengths, Areas to Improve, One-line verdict
 
 ---
